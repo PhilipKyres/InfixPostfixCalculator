@@ -1,6 +1,9 @@
 package com.philipkyres.calculator; 
 import java.math.BigDecimal;
 import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -36,8 +39,8 @@ public class CalculatorAction {
 	public Queue<String> infixToPostfix(final Queue<String> infix) throws IllegalArgumentException {
 		validate(infix);
 		
-		Queue<String> postfix = new ArrayDeque<String>();
-		ArrayDeque<String> operator = new ArrayDeque<String>(); //Operator stack //multiply divide plus minus 
+		Queue<String> postfix = new LinkedList<String>();
+		Deque<String> operator = new ArrayDeque<String>(); //Operator stack //multiply divide plus minus 
 		
 		for(String s : infix) {		
 			if(isNumeric(s)) { //Numbers strait to postfix
@@ -80,7 +83,7 @@ public class CalculatorAction {
 	 * @return evaluation
 	 */
 	public BigDecimal postfixToBigDecimal(final Queue<String> postfix) {
-		ArrayDeque<String> operand = new ArrayDeque<String>(); //Operand stack
+		Deque<String> operand = new ArrayDeque<String>(); //Operand stack
 		
 		for(String s : postfix) {
 			if(isNumeric(s)) { //Numbers strait to operand stack

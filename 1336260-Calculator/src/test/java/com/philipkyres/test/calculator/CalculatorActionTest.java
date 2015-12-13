@@ -40,11 +40,13 @@ public class CalculatorActionTest {
     @Parameters(name = "{index}: infix[{0}] postfix[{1}] result[{2}]")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-        	{"", "", "0"},
+        	//{"", "", "0"},
             {"23", "23", "23"},
             {"23 * 5", "23 5 *", "115"},
+            {"10 + 5 * 2", "10 5 2 * +", "20"},
             {"( 23 * 5 )", "23 5 *", "115"},
             {"23 * ( 54 + 12 )", "23 54 12 + *", "1518"},
+            {"5 + ( 4 ) + 3", "5 4 + 3 +", "12"}, 
             {"( ( ( ( ( 56.9 * 0.09 ) ) ) ) ) / ( ( 3 - 4.4 ) - ( 79 - .3 ) / ( 3 / 2.4 ) ) / 0.5 - 2", "56.9 0.09 * 3 4.4 - 79 .3 - 3 2.4 / / - / 0.5 / 2 -", "-2.16"},
             {"2 * 3 - 4 / 5", "2 3 * 4 5 / -", "5.2"},
             {"10 / 3 + ( 2 * ( 4 - 8.5 / 2.95 ) + 2 )", "10 3 / 2 4 8.5 2.95 / - * 2 + +", "7.571"}
@@ -96,7 +98,8 @@ public class CalculatorActionTest {
     @Test
     public void testPostfixToBigDecimal() {
     	Queue<String> postfix = this.calculator.infixToPostfix(this.infix);
-        assertEquals("Expected result and calculated result are not equal.", expectedResult, calculator.postfixToBigDecimal(postfix));
+    	
+        assertEquals("Expected result and calculated result are not equal.", expectedResult.toPlainString(), calculator.postfixToBigDecimal(postfix).toPlainString());
     }
     
 	private Queue<String> stringToQueue(String s) {
