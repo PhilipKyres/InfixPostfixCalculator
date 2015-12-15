@@ -3,7 +3,6 @@ import java.math.BigDecimal;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 /**
@@ -113,7 +112,6 @@ public class CalculatorAction {
 				operand.push(retVal.toPlainString());
 			}
 		}
-		
 		return (new BigDecimal(operand.peek())).stripTrailingZeros();
 	}
 	

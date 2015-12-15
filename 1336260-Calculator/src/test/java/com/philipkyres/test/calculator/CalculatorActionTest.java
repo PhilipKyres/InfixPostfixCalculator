@@ -40,7 +40,7 @@ public class CalculatorActionTest {
     @Parameters(name = "{index}: infix[{0}] postfix[{1}] result[{2}]")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-        	//{"", "", "0"},
+        	{"+ +", "+ +", "0"},
             {"23", "23", "23"},
             {"23 * 5", "23 5 *", "115"},
             {"10 + 5 * 2", "10 5 2 * +", "20"},
@@ -74,15 +74,7 @@ public class CalculatorActionTest {
         this.expectedPostfix = stringToQueue(expectedPostfix);
         this.expectedResult = new BigDecimal(expectedResult);
     }
-
-    /**
-     * Test of validate method, of class CalculatorAction.
-     */
-    @Test
-    public void testValidate() {
-        assertEquals("infix is not valid.", true, true);
-    }
-
+    
     /**
      * Test of infixToPostfix method, of class CalculatorAction.
      */
